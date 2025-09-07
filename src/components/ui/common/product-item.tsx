@@ -14,14 +14,14 @@ interface ProductItemProps {
 
 const ProductItem = ({ product, textContainerClassName }: ProductItemProps) => {
   const firstVariant = product.variants[0];
-  const cleanSrc = firstVariant.imageUrl
-    .replace(/^{|}$/g, "")
-    .replace(/^"+|"+$/g, "");
 
   return (
-    <Link href="/" className="flex flex-col gap-4">
+    <Link
+      href={`/product-variant/${firstVariant.slug}`}
+      className="flex flex-col gap-4"
+    >
       <Image
-        src={cleanSrc}
+        src={firstVariant.imageUrl[0]}
         alt={firstVariant.name}
         sizes="100vw"
         width={0}
