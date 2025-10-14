@@ -1,0 +1,1 @@
+ALTER TABLE "product_variant" ALTER COLUMN "image_url" SET DATA TYPE text;

@@ -8,6 +8,34 @@
       "when": 1756347479474,
       "tag": "0000_old_sunset_bain",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1760484585671,
+      "tag": "0001_demonic_mephisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1760485569162,
+      "tag": "0002_rainy_guardian",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1760485596659,
+      "tag": "0003_furry_ikaris",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1760485790025,
+      "tag": "0004_new_micromacro",
+      "breakpoints": true
     }
   ]
 }
