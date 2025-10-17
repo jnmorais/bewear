@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { categoryTable } from "@/db/schema";
 
-import { Button } from "../button";
+import { Button } from "../ui/button";
 
 interface CategorySelectorProps {
   categories: (typeof categoryTable.$inferSelect)[];
