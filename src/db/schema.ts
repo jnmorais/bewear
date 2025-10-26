@@ -24,7 +24,7 @@ export const userTable = pgTable("user", {
     .notNull(),
 });
 
-export const userRelations = relations(userTable, ({ one, many }) => ({
+export const userRelations = relations(userTable, ({ many, one }) => ({
   shippingAddresses: many(shippingAddressTable),
   cart: one(cartTable, {
     fields: [userTable.id],
@@ -145,11 +145,11 @@ export const shippingAddressTable = pgTable("shipping_address", {
   country: text().notNull(),
   phone: text().notNull(),
   email: text().notNull(),
-  cpfOrCpnj: text().notNull(),
+  cpfOrCnpj: text().notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
-export const shippingAdressRelations = relations(
+export const shippingAddressRelations = relations(
   shippingAddressTable,
   ({ one }) => ({
     user: one(userTable, {
@@ -158,17 +158,17 @@ export const shippingAdressRelations = relations(
     }),
     cart: one(cartTable, {
       fields: [shippingAddressTable.id],
-      references: [cartTable.shippingAddressTableId],
+      references: [cartTable.shippingAddressId],
     }),
   }),
 );
 
-export const cartTable = pgTable("cart_item", {
+export const cartTable = pgTable("cart", {
   id: uuid().primaryKey().defaultRandom(),
   userId: text("user_id")
     .notNull()
     .references(() => userTable.id, { onDelete: "cascade" }),
-  shippingAddressTableId: uuid("shipping_address_id").references(
+  shippingAddressId: uuid("shipping_address_id").references(
     () => shippingAddressTable.id,
     { onDelete: "set null" },
   ),
@@ -181,7 +181,7 @@ export const cartRelations = relations(cartTable, ({ one, many }) => ({
     references: [userTable.id],
   }),
   shippingAddress: one(shippingAddressTable, {
-    fields: [cartTable.shippingAddressTableId],
+    fields: [cartTable.shippingAddressId],
     references: [shippingAddressTable.id],
   }),
   items: many(cartItemTable),
